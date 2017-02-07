@@ -48,20 +48,56 @@ public class INIReader {
         }
     }
 
+    public string GetString(string category, string name, string defaultValue) {
+        try {
+            return dictionary[category][name];
+        }
+        catch {
+            return defaultValue;
+        }
+    }
+
     public string GetString(string category, string name) {
-        return dictionary[category][name];
+        return GetString(category, name, "");
+    }
+
+    public bool GetBool(string category, string name, bool defaultValue) {
+        try {
+            return bool.Parse(GetString(category, name, ""));
+        } 
+        catch {
+            return defaultValue;
+        }
     }
 
     public bool GetBool(string category, string name) {
-        return bool.Parse(GetString(category, name));
+        return GetBool(category, name, false);
+    }
+
+    public int GetInt(string category, string name, int defaultValue) {
+        try {
+            return int.Parse(GetString(category, name, ""));
+        }
+        catch {
+            return defaultValue;
+        }
     }
 
     public int GetInt(string category, string name) {
-        return int.Parse(GetString(category, name));
+        return GetInt(category, name, 0);
+    }
+
+    public float GetFloat(string category, string name, float defaultValue) {
+        try {
+            return float.Parse(GetString(category, name, ""));
+        }
+        catch {
+            return defaultValue;
+        }
     }
 
     public float GetFloat(string category, string name) {
-        return float.Parse(GetString(category, name));
+        return GetFloat(category, name, 0.0f);
     }
 
 }
