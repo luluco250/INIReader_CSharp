@@ -18,7 +18,7 @@ public class INIReader {
         string[] lines = File.ReadAllLines(filePath);
 
         for (int l = 0; l < lines.Length; ++l) {
-            sb.Length = 0; //reset sb in case a parsing error in the previous line left it with garbage data
+            sb.Length = 0; //reset sb for a new line, protects against garbage data from parsing errors as well
             lines[l].TrimStart(' ', '\t'); //trim any whitespace
 
             if (lines[l] == "" || lines[l][0] == ';' || lines[l][0] == '#') {
