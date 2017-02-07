@@ -14,10 +14,8 @@ public class INIReader {
         string[] lines = File.ReadAllLines(filename);
         for (int l = 0; l < lines.Length; ++l) {
             lines[l].TrimStart(' ', '\t'); //trim any whitespace
-            if (lines[l] == "") { //if line is empty
-                continue;
-            }
-            if (lines[l][0] == ';' || lines[l][0] == '#') { //go to the next line if the current one is a comment
+            //skip line if it's empty and/or is a comment
+            if (lines[l] == "" || lines[l][0] == ';' || lines[l][0] == '#') {
                 continue;
             }
             else if (lines[l][0] == '[') { //set category
