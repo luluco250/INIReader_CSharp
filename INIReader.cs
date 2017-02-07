@@ -17,7 +17,7 @@ public class INIReader {
             if (lines[l] == "") { //if line is empty
                 continue;
             }
-            if (lines[l][0] == ';') { //go to the next line if the current one is a comment
+            if (lines[l][0] == ';' || lines[l][0] == '#') { //go to the next line if the current one is a comment
                 continue;
             }
             else if (lines[l][0] == '[') { //set category
